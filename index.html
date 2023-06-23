@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fixed Full Height Navigation Bar</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 20%;
+      background-color: lightgray;
+      padding: 10px;
+    }
+
+    .navbar ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .navbar li {
+      margin-bottom: 5px;
+    }
+
+    .navbar li a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: black;
+    }
+
+    .navbar li a.active {
+      background-color: #04AA6D;
+    }
+
+    .content {
+      margin-left: 25%;
+      padding: 10px;
+    }
+
+    .content div {
+      display: none;
+    }
+
+    .content div.show {
+      display: block;
+    }
+  </style>
+  <script>
+    function showContent(contentId, buttonId) {
+      var contentDivs = document.getElementsByClassName("content-item");
+      for (var i = 0; i < contentDivs.length; i++) {
+        contentDivs[i].classList.remove("show");
+      }
+
+      var selectedContent = document.getElementById(contentId);
+      selectedContent.classList.add("show");
+
+      var buttons = document.getElementsByTagName("a");
+      for (var j = 0; j < buttons.length; j++) {
+        buttons[j].classList.remove("active");
+      }
+
+      var selectedButton = document.getElementById(buttonId);
+      selectedButton.classList.add("active");
+    }
+  </script>
+</head>
+<body>
+  <div class="navbar">
+    <ul>
+      <li><a href="#" id="homeBtn" onclick="showContent('home', 'homeBtn')">Home</a></li>
+      <li><a href="#" id="contactBtn" onclick="showContent('contact', 'contactBtn')">Contact</a></li>
+      <li><a href="#" id="informationBtn" onclick="showContent('information', 'informationBtn')">Information</a></li>
+      <li><a href="#" id="guideBtn" onclick="showContent('guide', 'guideBtn')">Guide</a></li>
+    </ul>
+  </div>
+  <div class="content">
+    <div id="home" class="content-item show">
+      <h2>Home</h2>
+      <p>Welcome to the Home page.</p>
+    </div>
+    <div id="contact" class="content-item">
+      <h2>Contact</h2>
+      <p>Contact information goes here.</p>
+    </div>
+    <div id="information" class="content-item">
+      <h2>Information</h2>
+      <p>Some information goes here.</p>
+    </div>
+    <div id="guide" class="content-item">
+      <h2>Guide</h2>
+      <p>Guide content goes here.</p>
+    </div>
+  </div>
+</body>
+</html>
+
